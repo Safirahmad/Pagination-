@@ -1,0 +1,60 @@
+{% include 'header.html' %}
+
+
+<br><br>
+<div class="container">
+  <div class="row">
+    {% for k in servicedata %}
+    <div class="col-md-3 mb-4">
+      <div class="card" style="width: 18rem">
+        <div class="card-body">
+          <h5 class="card-title">{{ k.car_title }}</h5>
+          <p class="card-text">
+            {{ k.car_desc|truncatechars:100 }}
+          </p>
+          <a href="#" class="btn btn-primary">{{ k.car_line }}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- ✅ Dynamic Pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      
+      {% if servicedata.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ servicedata.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previouss</span>
+        </li>
+      {% endif %}
+
+      {% for num in servicedata.paginator.page_range %}
+        {% if servicedata.number == num %}
+          <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+        {% else %}
+          <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+        {% endif %}
+      {% endfor %}
+
+      {% if servicedata.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ servicedata.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+      
+    </ul>
+  </nav>
+</div>
+
+
+  {% include 'footer.html' %}
+</div>
