@@ -1,8 +1,38 @@
 {% include 'header.html' %}
+<br>
+<div class="container">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Full Name</label>
+    <input type="text" name="name1" class="form-control" id="exampleFormControlInput1" placeholder="Safeer Ahmad">
+    </div>
+    <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email" name="name" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Phone Number</label>
+    <input type="number" name="number" class="form-control" id="exampleFormControlInput1" placeholder="+923497290988">
+    </div>
+    
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Message</label>
+      <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+    <button type="submit">submit</button>
+</form>
+</div>
+
+
 
 
 <br><br>
 <div class="container">
+
+
+
+  
   <div class="row">
     {% for k in servicedata %}
     <div class="col-md-3 mb-4">
